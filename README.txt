@@ -8,7 +8,7 @@ Things still to fill in are shown on the pages with a YELLOW background:
   - price = $149, launch price $99 (filled in; set the $99 up in Lemon Squeezy too)
   - support e-mail = sheetwiseengllc@gmail.com (filled in)
   - refund days (30 suggested) (refunds.html)
-  - version number / file size (download.html)
+  - version = 1.35 (download.html) - update when a new installer goes up
   - Buy link       = #buy-coming-soon       -> Lemon Squeezy checkout link (all pages)
   - Download link  = #download-coming-soon  -> signed installer link (all pages)
 
