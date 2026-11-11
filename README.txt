@@ -1,24 +1,22 @@
-MathSheet website (Sheetwise Engineering LLC)
-============================================
+MathSheet website (Sheetwise Engineering LLC) - https://sheetwise.github.io
+=========================================================================
 
-Plain HTML + style.css + images\. No MathSheet program files or code belong here - this folder goes on a PUBLIC GitHub repository.
+Plain HTML + style.css + js/site.js + images/. Hosted on GitHub Pages (public repository sheetwise/sheetwise.github.io).
+NEVER put MathSheet program files, code, version zips, keys or passwords in this folder.
 
-Pages: index (Home), features, pricing, download, support, terms (EULA text), privacy, refunds.
-Things still to fill in are shown on the pages with a YELLOW background:
-  - price = $149, launch price $99 (filled in; set the $99 up in Lemon Squeezy too)
-  - support e-mail = sheetwiseengllc@gmail.com (filled in)
-  - refund days (30 suggested) (refunds.html)
-  - version = 1.35 (download.html) - update when a new installer goes up
-  - Buy link       = #buy-coming-soon       -> Lemon Squeezy checkout link (all pages)
-  - Download link  = #download-coming-soon  -> signed installer link (all pages)
+The pages are made by ../mathsheet-website-tools/build-site.js (node build-site.js) - edit the text there, not in the .html files.
+That tools folder is NOT uploaded. check-site.js there tests every page (desktop + phone).
 
-Upload to GitHub Pages (web, no git needed):
-  1. github.com -> your repository <username>.github.io
-  2. "Add file" -> "Upload files"
-  3. Drag in ALL files from this folder AND the images folder (drag the folder itself so images\ keeps its name)
-  4. "Commit changes"
-  5. After 1-2 minutes the site is at https://<username>.github.io
+SWITCHING ON SALES - only one file to change: js/site.js, the SHOP block at the top
+  checkoutUrl : the Lemon Squeezy checkout link for MathSheet ("" = Buy buttons say "coming soon")
+  downloadUrl : the link to the signed installer ("" = Download buttons say "coming soon")
+Then upload js/site.js again. No page needs changing.
 
-Privacy page says: no cookies or analytics on this site. Keep it true (no tracking scripts) or update privacy.html.
-The privacy page describes online activation (licence key + computer code) - EULA 1.1 section 7 still says only "works offline";
-EULA 1.2 must be updated before the shop goes live, then copy the new text into terms.html.
+Price on the pages: $99 one-time (build-site.js PRICE). Version shown: 1.35 (build-site.js VERSION and site.js).
+Support e-mail: sheetwiseengllc@gmail.com. Refunds: 30 days.
+
+Pictures in images/ are real screenshots of MathSheet v1.35 example sheets; xl-*.png were made by Microsoft Excel
+from a workbook MathSheet saved.
+
+Upload to GitHub: https://github.com/sheetwise/sheetwise.github.io/upload -> Ctrl+A in this folder -> drag -> Commit changes.
+Old pictures no longer used on GitHub (delete them there if you like): images/bode-plots.png, symbolic-answers.png, x-y-plots.png.
