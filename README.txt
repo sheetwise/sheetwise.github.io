@@ -5,8 +5,8 @@ Plain HTML + style.css + images\. No MathSheet program files or code belong here
 
 Pages: index (Home), features, pricing, download, support, terms (EULA text), privacy, refunds.
 Things still to fill in are shown on the pages with a YELLOW background:
-  - price                     (pricing.html)
-  - support e-mail address    (support, privacy, refunds)
+  - price = $149, launch price $99 (filled in; set the $99 up in Lemon Squeezy too)
+  - support e-mail = sheetwiseengllc@gmail.com (filled in)
   - refund days (30 suggested) (refunds.html)
   - version number / file size (download.html)
   - Buy link       = #buy-coming-soon       -> Lemon Squeezy checkout link (all pages)
