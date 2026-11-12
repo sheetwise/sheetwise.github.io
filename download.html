@@ -40,7 +40,7 @@
     <h1>Try MathSheet free for 14 days.</h1>
     <p class="lead">Every feature, no account, no credit card.</p>
     <div class="btns"><a class="btn soon" href="download.html" data-download="Download MathSheet for Windows" data-style="primary" aria-disabled="true">Free trial - coming soon</a></div>
-    <p class="note">Version 1.35 &middot; Windows 10 or 11, 64-bit</p>
+    <p class="note">Version 1.36 &middot; Windows 10 or 11, 64-bit</p>
     <p class="note" data-when-prelaunch>The installer is being prepared and will be published here. <a href="mailto:sheetwiseengllc@gmail.com?subject=MathSheet%20trial">E-mail us</a> to hear when it is ready.</p>
   </div>
 </section>
@@ -49,12 +49,20 @@
   <div class="wrap narrow">
     <h2>Install</h2>
     <ol class="howto">
-      <li>Open the downloaded file from your Downloads folder.</li>
-      <li>If Windows SmartScreen shows a message, click <b>More info</b>, check that it names MathSheet, then click <b>Run anyway</b>.</li>
-      <li>Read the license agreement and accept it.</li>
+      <li>Download <b><span data-installer-name>MathSheet-Setup-1.36.exe</span></b> with the button above and open it from your Downloads folder.</li>
+      <li>Check the publisher. The installer is digitally signed by <b>Sheetwise Engineering LLC</b>. Whenever Windows shows a publisher name for the file, it must be exactly that.</li>
+      <li>Read the license agreement, tick <b>I accept</b> and click <b>Install</b>. MathSheet installs for your Windows user only; no administrator rights are needed.</li>
       <li>Start MathSheet from the Start menu. Double-clicking a <b>.msheet</b> file also opens it.</li>
       <li>New to MathSheet? Open <b>Help &rsaquo; Example sheets</b> or the user manual.</li>
     </ol>
+
+    <h3 id="verify">Check the download (optional)</h3>
+    <p>Every release lists the SHA-256 checksum of its installer. In Windows PowerShell, run:</p>
+    <pre class="cmd">Get-FileHash "$env:USERPROFILE\Downloads\<span data-installer-name>MathSheet-Setup-1.36.exe</span>" -Algorithm SHA256</pre>
+    <p>The <b>Hash</b> it prints must match: <code class="hash" data-sha256>published with each release</code></p>
+    <p>You can also right-click the file, choose <b>Properties &rsaquo; Digital Signatures</b> and check that the signer is Sheetwise Engineering LLC.</p>
+
+    <div class="callout"><p><b>If Windows warns you about the file:</b> please do not override the warning. Windows Defender SmartScreen can show a message for software it has not seen often yet, even when the file is signed. If the publisher is missing or is not Sheetwise Engineering LLC, or the checksum does not match, delete the file and download it again from this page. Still unsure? E-mail <a href="mailto:sheetwiseengllc@gmail.com">sheetwiseengllc@gmail.com</a> and we will help you check it.</p></div>
 
     <h2 id="activate">After you buy: activate your license</h2>
     <ol class="howto">
