@@ -186,6 +186,22 @@ dialog.lightbox img { display: block; max-width: 96vw; max-height: 88vh; width: 
 dialog.lightbox .cap { color: #e6e8eb; font-size: 14px; margin-top: 8px; text-align: center; }
 dialog.lightbox .x { position: fixed; top: 14px; right: 18px; font: 600 15px var(--font); color: #fff; background: rgba(255,255,255,.14); border: 0; border-radius: 999px; padding: 10px 16px; cursor: pointer; }
 
+/* coming soon: strip under the header + launch news sign-up */
+.soonbar { background: var(--soft2); border-bottom: 1px solid var(--line); font-size: 15px; }
+.soonbar .wrap { padding-top: 9px; padding-bottom: 9px; }
+.soonbar b { color: var(--red); }
+.soonbar a { display: inline-block; padding: 4px 0; font-weight: 600; }
+.newsbox { border: 2px solid var(--blue); border-radius: 14px; padding: 30px 32px; background: #fff; box-shadow: var(--shadow); }
+.newsbox h2 { margin: 0 0 8px; }
+.newsbox > p { margin: 0 0 18px; color: var(--ink2); }
+.signup .fields { display: grid; grid-template-columns: 2fr 1.3fr auto; gap: 14px; align-items: end; }
+.signup label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+.signup input { width: 100%; box-sizing: border-box; min-height: 46px; padding: 0 14px; font: inherit; font-size: 16px; border: 1px solid #c3c8cf; border-radius: 8px; }
+.signup input:focus { outline: 3px solid #8fb4e6; outline-offset: 1px; border-color: var(--blue); }
+.signup .btn { font: inherit; font-weight: 600; cursor: pointer; }
+.signup .note { margin: 12px 0 0; }
+[hidden] { display: none !important; }
+
 /* responsive */
 @media (max-width: 960px) {
   .split, .split.rev, .tabs [role="tabpanel"], .worked .body, .ba, .grid2 { grid-template-columns: 1fr; gap: 28px; }
@@ -213,6 +229,8 @@ dialog.lightbox .x { position: fixed; top: 14px; right: 18px; font: 600 15px var
   .band { padding: 40px 22px; border-radius: 14px; }
   footer.bottom .cols { grid-template-columns: 1fr; }
   .hero { padding-top: 44px; }
+  .signup .fields { grid-template-columns: 1fr; }
+  .newsbox { padding: 24px 20px; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 @media print { header.top, .subnav, footer.bottom, .btns { display: none; } }

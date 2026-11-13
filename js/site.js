@@ -1,5 +1,13 @@
 /* Sheetwise Engineering website - the only script on the site. No tracking, no cookies, no third-party code.
 
+   ====== LAUNCH NEWS ======
+   NEWS.formUrl : the Lemon Squeezy e-mail sign-up address. Once e-mail sign-ups work in Lemon Squeezy, put
+                  "https://sheetwiseeng.lemonsqueezy.com/email-subscribe/external" here. "" = the box shows an e-mail link.
+                  The form sends the visitor's address straight to Lemon Squeezy (privacy.html#news describes it). */
+var NEWS = { formUrl: "" };
+
+/*
+
    ====== SHOP SETTINGS - the ONE place to switch on real sales ======
    checkoutUrl : the Lemon Squeezy checkout link of the MathSheet product (Lemon Squeezy > Products > MathSheet > Share).
                  It must start with https:// and be a lemonsqueezy.com address. Leave "" until the store is approved (pre-launch mode).
@@ -37,6 +45,10 @@ var SHOP = {
   [].forEach.call(document.querySelectorAll("[data-when-prelaunch]"), function (e) { if (buy) e.hidden = true; });
   [].forEach.call(document.querySelectorAll("a[aria-disabled='true']"), function (a) { a.addEventListener("click", function (e) { e.preventDefault(); }); });
 
+  /* Launch news sign-up: <form data-signup> posts to Lemon Squeezy; <... data-signup-off> is the e-mail-us fallback. */
+  var news = ok(NEWS.formUrl, "lemonsqueezy.com");
+  [].forEach.call(document.querySelectorAll("form[data-signup]"), function (f) { if (news) { f.action = NEWS.formUrl; f.hidden = false; } });
+  [].forEach.call(document.querySelectorAll("[data-signup-off]"), function (e) { if (news) e.hidden = true; });
   /* Tabs: [data-tabs] holds role=tab buttons and role=tabpanel panels. Arrow keys move between tabs. */
   [].forEach.call(document.querySelectorAll("[data-tabs]"), function (box) {
     var tabs = [].slice.call(box.querySelectorAll("[role=tab]")), panels = [].slice.call(box.querySelectorAll("[role=tabpanel]"));
