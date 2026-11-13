@@ -234,3 +234,10 @@ dialog.lightbox .x { position: fixed; top: 14px; right: 18px; font: 600 15px var
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 @media print { header.top, .subnav, footer.bottom, .btns { display: none; } }
+/* demo clips (home page #demos) */
+.clips { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 28px; }
+.clips figure { margin: 0; }
+.clips video { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; }
+.clips figcaption { margin-top: 8px; font-size: .95rem; color: var(--ink2); }
+@media (max-width: 960px) { .clips { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .clips { grid-template-columns: 1fr; } }
