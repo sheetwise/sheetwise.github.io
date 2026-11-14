@@ -3,8 +3,9 @@
 
    ====== LAUNCH NEWS ======
    NEWS.formUrl : the Lemon Squeezy e-mail sign-up address. Once e-mail sign-ups work in Lemon Squeezy, put
-                  "https://sheetwiseeng.lemonsqueezy.com/email-subscribe/external" here. "" = the box shows an e-mail link.
-                  The form sends the visitor's address straight to Lemon Squeezy (privacy.html#news describes it). */
+                  "https://sheetwiseeng.lemonsqueezy.com/email-subscribe/external" here (and update privacy.html#news).
+                  "" = the box sends the address to our Gmail through Web3Forms (CONTACT.key below), subject
+                  "MathSheet launch news: new sign-up". Keep those e-mails: they are the launch list. */
 var NEWS = { formUrl: "" };
 
 /* ====== CONTACT FORM ======
@@ -51,12 +52,35 @@ var SHOP = {
   [].forEach.call(document.querySelectorAll("[data-when-prelaunch]"), function (e) { if (buy) e.hidden = true; });
   [].forEach.call(document.querySelectorAll("a[aria-disabled='true']"), function (a) { a.addEventListener("click", function (e) { e.preventDefault(); }); });
 
-  /* Launch news sign-up: <form data-signup> posts to Lemon Squeezy; <... data-signup-off> is the e-mail-us fallback. */
+  /* Launch news sign-up: <form data-signup>. With NEWS.formUrl it posts to Lemon Squeezy; otherwise Web3Forms
+     e-mails the address to us (CONTACT.key). <... data-signup-off> is the e-mail-us fallback. */
   var news = ok(NEWS.formUrl, "lemonsqueezy.com");
-  [].forEach.call(document.querySelectorAll("form[data-signup]"), function (f) { if (news) { f.action = NEWS.formUrl; f.hidden = false; } });
-  [].forEach.call(document.querySelectorAll("[data-signup-off]"), function (e) { if (news) e.hidden = true; });
-  /* Contact form: <form data-contact> posts to Web3Forms; <... data-contact-off> is the e-mail fallback. */
   var ckey = /^[0-9a-f-]{36}$/i.test(CONTACT.key);
+  [].forEach.call(document.querySelectorAll("form[data-signup]"), function (f) {
+    if (news) { f.action = NEWS.formUrl; ["access_key", "from_name", "subject", "botcheck"].forEach(function (n) { if (f[n]) f.removeChild(f[n]); }); f.hidden = false; return; }
+    if (!ckey) return;
+    f.access_key.value = CONTACT.key; f.hidden = false;
+    var res = f.querySelector(".result"), btn = f.querySelector("button[type=submit]");
+    f.addEventListener("submit", function (e) {
+      if (!window.fetch || !window.FormData) return;
+      e.preventDefault();
+      btn.disabled = true; res.className = "result"; res.textContent = "Sending...";
+      fetch(f.action, { method: "POST", headers: { Accept: "application/json" }, body: new FormData(f) })
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+          if (!d.success) throw new Error(d.message || "not sent");
+          f.reset(); res.className = "result ok";
+          res.textContent = "Thank you - you're on the list. We'll e-mail you the day MathSheet launches.";
+        })
+        .catch(function () {
+          res.className = "result bad";
+          res.textContent = "Sorry, that did not go through. Please e-mail us at info@mathsheet.net and we'll add you.";
+        })
+        .then(function () { btn.disabled = false; });
+    });
+  });
+  [].forEach.call(document.querySelectorAll("[data-signup-off]"), function (e) { if (news || ckey) e.hidden = true; });
+  /* Contact form: <form data-contact> posts to Web3Forms; <... data-contact-off> is the e-mail fallback. */
   [].forEach.call(document.querySelectorAll("form[data-contact]"), function (f) {
     if (!ckey) return;
     f.access_key.value = CONTACT.key; f.hidden = false;

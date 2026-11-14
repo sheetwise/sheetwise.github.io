@@ -209,10 +209,12 @@ dialog.lightbox .x { position: fixed; top: 14px; right: 18px; font: 600 15px var
 .contact .btn { font: inherit; font-weight: 600; justify-self: start; }
 .contact .btn:disabled { opacity: .6; cursor: wait; }
 .contact .note { margin: 0; }
-.contact .result { margin: 0; font-weight: 600; }
-.contact .result.ok { color: #1b7a3a; }
-.contact .result.bad { color: #d00000; }
-.contact .hp { display: none; }
+.contact .result, .signup .result { margin: 0; font-weight: 600; }
+.signup .result { margin-top: 10px; }
+.signup .result:empty { display: none; }
+.contact .result.ok, .signup .result.ok { color: #1b7a3a; }
+.contact .result.bad, .signup .result.bad { color: #d00000; }
+.contact .hp, .signup .hp { display: none; }
 [hidden] { display: none !important; }
 
 /* responsive */
