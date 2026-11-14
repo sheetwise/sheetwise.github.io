@@ -1,4 +1,4 @@
-/* Sheetwise Engineering website - the only script on the site. No tracking, no cookies, no third-party code.
+/* Sheetwise Engineering website - our own script. No cookies. (Visits are counted by Cloudflare Web Analytics, a separate cookie-free script in each page.)
    (The contact form sends its fields to Web3Forms, which e-mails them to us - privacy.html#messages.)
 
    ====== LAUNCH NEWS ======
