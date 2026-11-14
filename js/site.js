@@ -1,10 +1,16 @@
 /* Sheetwise Engineering website - the only script on the site. No tracking, no cookies, no third-party code.
+   (The contact form sends its fields to Web3Forms, which e-mails them to us - privacy.html#messages.)
 
    ====== LAUNCH NEWS ======
    NEWS.formUrl : the Lemon Squeezy e-mail sign-up address. Once e-mail sign-ups work in Lemon Squeezy, put
                   "https://sheetwiseeng.lemonsqueezy.com/email-subscribe/external" here. "" = the box shows an e-mail link.
                   The form sends the visitor's address straight to Lemon Squeezy (privacy.html#news describes it). */
 var NEWS = { formUrl: "" };
+
+/* ====== CONTACT FORM ======
+   CONTACT.key : the Web3Forms access key (web3forms.com, made for the Sheetwise Gmail). It is not a secret.
+                 "" = the Support page shows the e-mail address instead of the form. */
+var CONTACT = { key: "7e087e4b-5e73-433a-a0cc-3b1182cb698f" };
 
 /*
 
@@ -49,6 +55,32 @@ var SHOP = {
   var news = ok(NEWS.formUrl, "lemonsqueezy.com");
   [].forEach.call(document.querySelectorAll("form[data-signup]"), function (f) { if (news) { f.action = NEWS.formUrl; f.hidden = false; } });
   [].forEach.call(document.querySelectorAll("[data-signup-off]"), function (e) { if (news) e.hidden = true; });
+  /* Contact form: <form data-contact> posts to Web3Forms; <... data-contact-off> is the e-mail fallback. */
+  var ckey = /^[0-9a-f-]{36}$/i.test(CONTACT.key);
+  [].forEach.call(document.querySelectorAll("form[data-contact]"), function (f) {
+    if (!ckey) return;
+    f.access_key.value = CONTACT.key; f.hidden = false;
+    var res = f.querySelector(".result"), btn = f.querySelector("button[type=submit]");
+    f.addEventListener("submit", function (e) {
+      if (!window.fetch || !window.FormData) return;
+      e.preventDefault();
+      f.subject.value = "MathSheet website: " + f.topic.value;
+      btn.disabled = true; res.className = "result"; res.textContent = "Sending...";
+      fetch(f.action, { method: "POST", headers: { Accept: "application/json" }, body: new FormData(f) })
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+          if (!d.success) throw new Error(d.message || "not sent");
+          f.reset(); res.className = "result ok";
+          res.textContent = "Thank you - your message is on its way. We usually reply within two working days.";
+        })
+        .catch(function () {
+          res.className = "result bad";
+          res.textContent = "Sorry, the message could not be sent. Please e-mail us at support@mathsheet.net.";
+        })
+        .then(function () { btn.disabled = false; });
+    });
+  });
+  [].forEach.call(document.querySelectorAll("[data-contact-off]"), function (e) { if (ckey) e.hidden = true; });
   /* Tabs: [data-tabs] holds role=tab buttons and role=tabpanel panels. Arrow keys move between tabs. */
   [].forEach.call(document.querySelectorAll("[data-tabs]"), function (box) {
     var tabs = [].slice.call(box.querySelectorAll("[role=tab]")), panels = [].slice.call(box.querySelectorAll("[role=tabpanel]"));
