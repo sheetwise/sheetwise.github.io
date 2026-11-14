@@ -61,6 +61,9 @@ section.soft { background: var(--soft); }
 .hero .lead { margin: 0 auto; }
 .hero .btns { justify-content: center; }
 .hero .shotwrap { margin: 44px auto 0; max-width: 980px; }
+.herovid { margin: 40px auto 0; max-width: 620px; }
+.herovid video { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); background: #fff; }
+.herovid figcaption { margin-top: 10px; font-size: .95rem; color: var(--ink2); }
 
 /* screenshots */
 .frame { display: block; border: 1px solid #d9dce1; border-radius: var(--radius); background: #fff; box-shadow: var(--shadow); overflow: hidden; }

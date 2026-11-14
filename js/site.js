@@ -105,6 +105,9 @@ var SHOP = {
     });
   });
   [].forEach.call(document.querySelectorAll("[data-contact-off]"), function (e) { if (ckey) e.hidden = true; });
+  /* Home page video loops by itself - not for visitors who asked their system for less motion (they get the play button). */
+  if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches)
+    [].forEach.call(document.querySelectorAll(".herovid video"), function (v) { v.pause(); v.removeAttribute("autoplay"); v.controls = true; });
   /* Tabs: [data-tabs] holds role=tab buttons and role=tabpanel panels. Arrow keys move between tabs. */
   [].forEach.call(document.querySelectorAll("[data-tabs]"), function (box) {
     var tabs = [].slice.call(box.querySelectorAll("[role=tab]")), panels = [].slice.call(box.querySelectorAll("[role=tabpanel]"));
